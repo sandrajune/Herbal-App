@@ -22,6 +22,11 @@ function Signup() {
         role,
         createdAt: new Date()
       });
+      const role = email === 'admin@example.com' ? 'admin' : 'user';
+    await setDoc(doc(db, 'users', user.uid), {
+      email,
+      role
+    });
       navigate('/');
     } catch (err) {
       setError(err.message);
